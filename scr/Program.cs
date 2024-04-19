@@ -58,6 +58,16 @@ namespace scr
             }
             return wc;
         }
+        static void FilePrint(WeatherControl wc)
+        {
+            using (StreamWriter writer = new StreamWriter(File.Open("result.txt", FileMode.Create)))
+            {
+                foreach (Indications a in wc.indi)
+                {
+                    writer.Write($"Температура = {a.temper}\nВлажность = {a.vlasz}\nДавление = {a.davl}\n\n");
+                }
+            }
+        }
         static void Main(string[] args)
         {
             int n;
@@ -81,7 +91,7 @@ namespace scr
 
             for (int i = 0; i < n; i++)
             {
-                Console.WriteLine($"\nТемература = {wc.indi[i].temper}\nВлажномть = {wc.indi[i].vlasz}\nДавление = {wc.indi[i].davl}\n");
+                Console.WriteLine($"\nТемература = {wc.indi[i].temper}\nВлажноcть = {wc.indi[i].vlasz}\nДавление = {wc.indi[i].davl}\n");
             }
 
             Console.WriteLine("\nОтсортированный массив:");
@@ -90,8 +100,10 @@ namespace scr
 
             for (int i = 0; i < n; i++)
             {
-                Console.WriteLine($"\nТемература = {sorted.indi[i].temper}\nВлажномть = {sorted.indi[i].vlasz}\nДавление = {sorted.indi[i].davl}\n");
+                Console.WriteLine($"\nТемература = {sorted.indi[i].temper}\nВлажноcть = {sorted.indi[i].vlasz}\nДавление = {sorted.indi[i].davl}\n");
             }
+
+            FilePrint(sorted);
         }
     }
 }
