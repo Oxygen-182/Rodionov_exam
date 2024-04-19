@@ -11,10 +11,10 @@ namespace scr
     {
         class Indications
         {
-            public int temper;
-            public int vlasz;
-            public int davl;
-            public Indications (int temper, int vlasz, int davl)
+            public double temper;
+            public double vlasz;
+            public double davl;
+            public Indications (double temper, double vlasz, double davl)
             {
                 this.temper = temper;
                 this.vlasz = vlasz;
@@ -76,16 +76,16 @@ namespace scr
 
             Indications[] masIndi = new Indications[n];
             WeatherControl wc = new WeatherControl(masIndi);
-            int temper, vlasz, davl;
+            double temper, vlasz, davl;
 
             for (int i = 0; i < n; i++)
             {
                 Console.WriteLine("\nВведите температуру");
-                temper = Convert.ToInt32(Console.ReadLine());
+                temper = Convert.ToDouble(Console.ReadLine());
                 Console.WriteLine("Введите влажность");
-                vlasz = Convert.ToInt32(Console.ReadLine());
+                vlasz = Convert.ToDouble(Console.ReadLine());
                 Console.WriteLine("Введите давление");
-                davl = Convert.ToInt32(Console.ReadLine());
+                davl = Convert.ToDouble(Console.ReadLine());
                 wc.indi[i] = new Indications(temper, vlasz, davl);
             }
 
