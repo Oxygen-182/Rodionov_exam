@@ -70,9 +70,16 @@ namespace scr
         }
         static void Main(string[] args)
         {
-            int n;
+            int n = 0;
             Console.WriteLine("Введите размерность массива");
-            n = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                n = Convert.ToInt32(Console.ReadLine());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            };
 
             Indications[] masIndi = new Indications[n];
             WeatherControl wc = new WeatherControl(masIndi);
